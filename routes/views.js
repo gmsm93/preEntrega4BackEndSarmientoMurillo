@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 router.get('/', (req, res) => {
   fs.readFile('productos.json', 'utf8', (err, data) => {
     if (err) {
@@ -13,7 +12,6 @@ router.get('/', (req, res) => {
     }
   });
 });
-
 
 router.get('/realtimeproducts', (req, res) => {
   res.render('realTimeProducts');
