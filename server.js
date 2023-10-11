@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const PORT = 8080;
 
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
