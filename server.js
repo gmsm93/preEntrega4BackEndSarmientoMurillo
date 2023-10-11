@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-const exphbs = require('express-handlebars');
 const fs = require('fs');
+const exphbs = require('express-handlebars');
+
 
 const PORT = 8080;
 

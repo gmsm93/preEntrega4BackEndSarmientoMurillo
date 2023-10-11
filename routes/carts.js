@@ -20,7 +20,6 @@ router.get('/:cid', (req, res) => {
   });
 });
 
-
 router.post('/:cid/product/:pid', (req, res) => {
   const cid = req.params.cid;
   const pid = req.params.pid;
