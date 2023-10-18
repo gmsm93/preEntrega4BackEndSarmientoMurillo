@@ -19,8 +19,15 @@ router.get('/', (req, res) => {
 // });
 
 router.get('/product-list', (req, res) => {
-  const products = JSON.parse(data);
-  res.render('productList', { products });
+  fs.readFile('productos.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error al leer los productos');
+    } else {
+      const products = JSON.parse(data);
+      res.render('productList', { products });
+    }
+  });
 });
 
 module.exports = router;

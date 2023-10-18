@@ -30,14 +30,31 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
-
 app.get('/add-product', (req, res) => {
   res.render('addProduct');
 });
 
 app.post('/add-product', (req, res) => {
-  res.redirect('/product-list');
+  if (err) {
+    console.error(err);
+    res.status(500).send('Error al agregar los productos');
+  } else {
+    res.redirect('/product-list');
+  }
+});
+
+app.get('/product-list', (req, res) => {
+  fs.readFile('productos.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error al leer los productos');
+    } else {
+      const products = JSON.parse(data);
+      res.render('productList', { products });
+    }
+  });
+});
+
+http.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
