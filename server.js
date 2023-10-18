@@ -33,3 +33,11 @@ io.on('connection', (socket) => {
 http.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
+
+app.get('/add-product', (req, res) => {
+  res.render('addProduct');
+});
+
+app.post('/add-product', (req, res) => {
+  res.redirect('/product-list');
+});

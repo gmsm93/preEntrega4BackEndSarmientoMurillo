@@ -1,0 +1,11 @@
+{{#extends 'layouts/main'}}
+{{#content 'body'}}
+  <h1>Agregar Producto</h1>
+  <form method="POST" action="/add-product">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" required>
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" required>
+    <button type="submit">Agregar Producto</button>
+  </form>
+{{/content}}

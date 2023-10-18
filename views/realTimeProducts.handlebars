@@ -23,6 +23,10 @@
 <body>
   <h1>Real-Time Products</h1>
   <ul id="productList">
+    {{#each products}}
+      <li>{{this.title}}</li>
+    {{/each}}
   </ul>
+  <a href="/add-product">Agregar Producto</a>
 </body>
 </html>

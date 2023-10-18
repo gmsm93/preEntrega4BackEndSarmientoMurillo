@@ -1,0 +1,14 @@
+{{#extends 'layouts/main'}}
+{{#content 'body'}}
+  <h1>Lista de Productos</h1>
+  <ul id="productList">
+    {{#each products}}
+      <li>
+        {{this.title}}
+        <form method="POST" action="/delete-product/{{this.id}}" style="display: inline;">
+          <button type="submit">Eliminar</button>
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+{{/content}}
