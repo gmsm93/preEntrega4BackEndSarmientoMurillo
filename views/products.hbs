@@ -9,13 +9,12 @@
     {{#each products}}
       <li>
         {{this.title}} - Price: {{this.price}}
-        <a href="/carts/{{this._id}}/add-to-cart">Add to Cart</a> <!-- Enlace para agregar al carrito -->
-        <a href="/products/{{this._id}}">Details</a> <!-- Enlace para ver detalles del producto -->
+        <a href="/carts/{{this._id}}/add-to-cart">Add to Cart</a> 
+        <a href="/products/{{this._id}}">Details</a> 
       </li>
     {{/each}}
   </ul>
 
-  <!-- Paginación -->
   <div>
     {{#if hasPrevPage}}
       <a href="{{prevLink}}">Previous</a>
