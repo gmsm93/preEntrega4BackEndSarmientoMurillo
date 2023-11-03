@@ -4,6 +4,7 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const fs = require('fs');
 const exphbs = require('express-handlebars');
+const ProductManager = require('./models/ProductManager'); 
 
 
 const PORT = 8080;
@@ -12,6 +13,9 @@ app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
+
+const productManager = new ProductManager(); 
+
 
 const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
@@ -35,25 +39,22 @@ app.get('/add-product', (req, res) => {
 });
 
 app.post('/add-product', (req, res) => {
-  if (err) {
-    console.error(err);
-    res.status(500).send('Error al agregar los productos');
-  } else {
-    res.redirect('/product-list');
-  }
+  const newProduct = req.body;
+  productManager.addProduct(newProduct); 
+  res.redirect('/product-list');
 });
 
 app.get('/product-list', (req, res) => {
-  fs.readFile('productos.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error al leer los productos');
-    } else {
-      const products = JSON.parse(data);
-      res.render('productList', { products });
-    }
-  });
+  const products = productManager.getAllProducts();
+  res.render('productList', { products });
 });
+
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send('Error interno del servidor');
+});
+
 
 http.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);

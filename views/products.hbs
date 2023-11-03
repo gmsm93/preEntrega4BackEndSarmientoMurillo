@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+</head>
+<body>
+  <h1>Product List</h1>
+  <ul>
+    {{#each products}}
+      <li>
+        {{this.title}} - Price: {{this.price}}
+        <a href="/carts/{{this._id}}/add-to-cart">Add to Cart</a> <!-- Enlace para agregar al carrito -->
+        <a href="/products/{{this._id}}">Details</a> <!-- Enlace para ver detalles del producto -->
+      </li>
+    {{/each}}
+  </ul>
+
+  <!-- Paginación -->
+  <div>
+    {{#if hasPrevPage}}
+      <a href="{{prevLink}}">Previous</a>
+    {{/if}}
+    <span>Page {{page}} of {{totalPages}}</span>
+    {{#if hasNextPage}}
+      <a href="{{nextLink}}">Next</a>
+    {{/if}}
+  </div>
+</body>
+</html>
