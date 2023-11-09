@@ -9,10 +9,15 @@
   "author": "Gustavo M Sarmiento Murillo",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
     "handlebars": "^4.7.7",
     "http": "^0.0.1-security",
+    "mongoose": "^8.0.0",
+    "mongoose-paginate-v2": "^1.7.4",
     "socket.io": "^4.6.2"
   }
 }
